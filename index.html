@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Data Structure Visualizer</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <!-- ===== HEADER ===== -->
+  <header class="header">
+    <div class="header-inner">
+      <div class="logo">
+        <span class="logo-bracket">{</span>
+        <span class="logo-text">DS<span class="logo-accent">viz</span></span>
+        <span class="logo-bracket">}</span>
+      </div>
+      <nav class="nav">
+        <button class="nav-btn active" data-ds="stack">Stack</button>
+        <button class="nav-btn" data-ds="queue">Queue</button>
+        <button class="nav-btn" data-ds="linkedlist">Linked List</button>
+      </nav>
+      <div class="header-actions">
+        <button class="icon-btn" id="randomBtn" title="Generate random data">&#9881;</button>
+        <button class="icon-btn" id="resetBtn" title="Reset">&#8635;</button>
+        <button class="icon-btn" id="themeBtn" title="Toggle theme">&#9788;</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ===== MAIN LAYOUT ===== -->
+  <main class="main">
+
+    <!-- LEFT: Controls Panel -->
+    <aside class="panel panel-controls">
+      <div class="panel-header">
+        <span class="panel-title" id="dsTitle">Stack</span>
+        <span class="badge" id="sizeBadge">Size: 0</span>
+      </div>
+
+      <!-- STACK CONTROLS -->
+      <div class="controls-group" id="stackControls">
+        <div class="input-row">
+          <input type="number" id="stackInput" class="input" placeholder="Value..." min="-999" max="9999" />
+        </div>
+        <button class="op-btn push-btn" data-op="push">
+          <span class="op-icon">↑</span> Push
+        </button>
+        <button class="op-btn pop-btn" data-op="pop">
+          <span class="op-icon">↓</span> Pop
+        </button>
+        <button class="op-btn peek-btn" data-op="peek">
+          <span class="op-icon">👁</span> Peek
+        </button>
+      </div>
+
+      <!-- QUEUE CONTROLS -->
+      <div class="controls-group hidden" id="queueControls">
+        <div class="input-row">
+          <input type="number" id="queueInput" class="input" placeholder="Value..." min="-999" max="9999" />
+        </div>
+        <button class="op-btn enqueue-btn" data-op="enqueue">
+          <span class="op-icon">→</span> Enqueue
+        </button>
+        <button class="op-btn dequeue-btn" data-op="dequeue">
+          <span class="op-icon">←</span> Dequeue
+        </button>
+        <button class="op-btn front-btn" data-op="front">
+          <span class="op-icon">👁</span> Front
+        </button>
+      </div>
+
+      <!-- LINKED LIST CONTROLS -->
+      <div class="controls-group hidden" id="linkedlistControls">
+        <div class="input-row">
+          <input type="number" id="llInput" class="input" placeholder="Value..." min="-999" max="9999" />
+        </div>
+        <button class="op-btn insert-begin-btn" data-op="insertBegin">
+          <span class="op-icon">⇤</span> Insert at Head
+        </button>
+        <button class="op-btn insert-end-btn" data-op="insertEnd">
+          <span class="op-icon">⇥</span> Insert at Tail
+        </button>
+        <button class="op-btn delete-btn" data-op="delete">
+          <span class="op-icon">✕</span> Delete Node
+        </button>
+        <button class="op-btn search-btn" data-op="search">
+          <span class="op-icon">⌕</span> Search
+        </button>
+      </div>
+
+      <!-- MESSAGE LOG -->
+      <div class="message-box" id="messageBox">
+        <span class="msg-icon">ℹ</span>
+        <span id="messageText">Select an operation to begin.</span>
+      </div>
+    </aside>
+
+    <!-- CENTER: Visualization -->
+    <section class="panel panel-viz">
+      <div class="viz-label" id="vizLabel">STACK VISUALIZATION</div>
+      <div class="viz-stage" id="vizStage">
+        <div class="empty-state" id="emptyState">
+          <div class="empty-icon">⬚</div>
+          <p>Empty — push some values!</p>
+        </div>
+      </div>
+      <!-- Queue pointer labels -->
+      <div class="pointer-labels hidden" id="pointerLabels">
+        <span class="ptr-label front-label">FRONT</span>
+        <span class="ptr-label rear-label">REAR</span>
+      </div>
+    </section>
+
+    <!-- RIGHT: Info Panel -->
+    <aside class="panel panel-info">
+      <div class="info-section">
+        <div class="info-title">⏱ Complexity</div>
+        <div class="complexity-grid" id="complexityGrid">
+          <div class="cx-row"><span class="cx-op">Push</span><span class="cx-val">O(1)</span></div>
+          <div class="cx-row"><span class="cx-op">Pop</span><span class="cx-val">O(1)</span></div>
+          <div class="cx-row"><span class="cx-op">Peek</span><span class="cx-val">O(1)</span></div>
+          <div class="cx-row cx-space"><span class="cx-op">Space</span><span class="cx-val">O(n)</span></div>
+        </div>
+      </div>
+
+      <div class="info-section">
+        <div class="info-title">📖 Pseudocode</div>
+        <pre class="pseudocode" id="pseudocode">function push(value):
+  stack.top = new Node(value)
+  stack.size++</pre>
+      </div>
+
+      <div class="info-section">
+        <div class="info-title">💡 How it works</div>
+        <p class="explanation" id="explanation">
+          A <strong>Stack</strong> is a LIFO (Last In, First Out) structure. Elements are added and removed from the same end (top). Think of a stack of plates — you add to the top and remove from the top.
+        </p>
+      </div>
+    </aside>
+
+  </main>
+
+  <!-- Toast notification -->
+  <div class="toast" id="toast"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
