@@ -1,5 +1,7 @@
 # Data Structure Visualizer
 
+![Preview](assets/preview.svg)
+
 A small interactive visualizer for basic data structures: Stack, Queue, and Singly Linked List.
 
 ## Features

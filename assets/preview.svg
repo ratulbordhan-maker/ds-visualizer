@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="600" viewBox="0 0 1200 600">
+  <defs>
+    <linearGradient id="g" x1="0" x2="1">
+      <stop offset="0%" stop-color="#7b61ff"/>
+      <stop offset="100%" stop-color="#4fffb0"/>
+    </linearGradient>
+    <style>
+      .bg{fill:#0d0f14}
+      .card{fill:#141720;stroke:#2a2f45;stroke-width:2}
+      .title{font-family: 'Syne', system-ui, sans-serif; font-weight:700; font-size:36px; fill:#fff}
+      .mono{font-family: 'JetBrains Mono', monospace; font-size:20px; fill:#e2e8f8}
+    </style>
+  </defs>
+  <rect class="bg" width="1200" height="600"/>
+  <rect class="card" x="48" y="48" width="1104" height="504" rx="12"/>
+  <text x="96" y="110" class="title">Data Structure Visualizer — Preview</text>
+  <g transform="translate(96,150)">
+    <rect x="0" y="0" width="220" height="180" rx="8" fill="url(#g)" opacity="0.12"/>
+    <text x="20" y="30" class="mono">Stack: [ 12, 34, 56 ]</text>
+    <rect x="260" y="0" width="420" height="120" rx="8" fill="url(#g)" opacity="0.08"/>
+    <text x="280" y="30" class="mono">Queue: [ 11 → 22 → 33 ]</text>
+    <rect x="720" y="0" width="320" height="120" rx="8" fill="url(#g)" opacity="0.08"/>
+    <text x="740" y="30" class="mono">Linked List: 5 → 8 → 13</text>
+  </g>
+  <text x="96" y="520" class="mono">Open index.html to interact with the visualizer — or visit the GitHub Pages demo (if deployed).</text>
+</svg>
