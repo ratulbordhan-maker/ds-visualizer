@@ -24,10 +24,22 @@ python -m http.server 8000
 
 Or use a VS Code Live Server extension.
 
+## Live demo
+If GitHub Pages is enabled, the site will be available at:
+
+```
+https://ratulbordhan-maker.github.io/ds-visualizer
+```
+
+(Allow a minute after Actions finishes for the site to appear.)
+
 ## Files
 - `index.html` — UI and structure
 - `style.css` — styles
 - `script.js` — application logic
+
+## Contributing
+See `CONTRIBUTING.md` for contribution guidelines. Use issue templates for bug reports or feature requests.
 
 ## Deploy to GitHub Pages
 This repo includes a GitHub Actions workflow that deploys the repository root to GitHub Pages on push to the default branch.
